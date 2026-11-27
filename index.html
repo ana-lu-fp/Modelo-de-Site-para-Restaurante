@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet & Grill — Alta Gastronomia & Steakhouse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i data-lucide="utensils" style="color:var(--brand-red);"></i>
+                <span class="logo-name">Gourmet &amp; <span>Grill</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#inicio" onclick="scrollToSection('inicio'); return false;" class="active">Início</a>
+                <a href="#sobre" onclick="scrollToSection('sobre'); return false;">Sobre</a>
+                <a href="#espaco" onclick="scrollToSection('espaco'); return false;">Nosso Espaço</a>
+                <a href="cardapio.html">Cardápio & Pedidos</a>
+                <a href="#feedback" onclick="scrollToSection('feedback'); return false;">Depoimentos</a>
+                <a href="#contato" onclick="scrollToSection('contato'); return false;">Contato</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-cart" aria-label="Abrir sacola" onclick="toggleCartDrawer()">
+                    <i data-lucide="shopping-bag" style="width:18px; height:18px;"></i>
+                    <span><span class="cart-label">Sacola </span>(<span id="cartCount">0</span>)</span>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <a href="index.html#inicio">Início</a>
+            <a href="cardapio.html">Cardápio & Vinhos</a>
+            <a href="index.html#sobre">Nossa História</a>
+            <a href="index.html#espaco">Ambiente</a>
+            <a href="index.html#depoimentos">Depoimentos</a>
+            <a href="index.html#contato">Reservas</a>
+        </div>
+        </header>
+        
+
+    <main>
+        <!-- SEÇÃO: INÍCIO (HERO COM VÍDEO) -->
+        <section id="inicio" class="hero-video-section">
+            <video autoplay muted loop playsinline class="video-bg">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-chef-cooking-in-a-restaurant-kitchen-43285-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+            
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span style="background: rgba(229,57,53,0.18); color: var(--brand-red); padding: 6px 16px; border-radius: 20px; font-weight:700; font-size:0.85rem; display:inline-block; margin-bottom:16px;">
+                        Experiência Gastronômica Imersiva
+                    </span>
+                    <h1>Sabores inesquecíveis preparados na <span>brasa viva</span>.</h1>
+                    <p>Cortes nobres selecionados, massas artesanais e drinques autorais em um ambiente sofisticado.</p>
+                    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                        <a href="cardapio.html" class="btn-primary">
+                            Ver Cardápio Completo <i data-lucide="arrow-right" style="width:18px; height:18px;"></i>
+                        </a>
+                        <a href="#contato" onclick="scrollToSection('contato'); return false;" class="btn-outline" style="border-color:rgba(255,255,255,0.3); color:#fff; padding:14px 28px; border-radius:30px; text-decoration:none; font-weight:700;">
+                            Reservar Mesa
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Cortes Nobres" class="hero-main-img">
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- SEÇÃO: PRÉVIA DO CARDÁPIO NO INÍCIO -->
+        <section class="container section">
+            <h2 class="section-title">Prévia do Cardápio em Destaque</h2>
+            <p style="text-align:center; color:var(--text-muted); max-width:650px; margin:0 auto 35px auto;">Experimente alguns dos nossos pratos mais amados, preparados com ingredientes frescos e brasa viva.</p>
+            
+            <div class="cards-grid" style="margin-bottom:40px;">
+                <div class="product-card">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80" alt="Bife de Chorizo na Brasa 400g">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-tag">Carnes Nobres</span>
+                            <h3>Bife de Chorizo na Brasa 400g</h3>
+                            <p>Corte nobre suculento acompanhado de batatas rústicas e chimichurri.</p>
+                        </div>
+                        <div>
+                            <div class="card-price">R$ 115,00</div>
+                            <button class="btn-outline" onclick="addToCart(1)">
+                                <i data-lucide="plus" style="width:16px; height:16px;"></i> Adicionar à Sacola
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Burger Artesanal Angus Prime">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-tag">Hambúrgueres</span>
+                            <h3>Burger Artesanal Angus Prime</h3>
+                            <p>Blend Angus 180g, queijo cheddar inglês, bacon crispy e molho especial.</p>
+                        </div>
+                        <div>
+                            <div class="card-price">R$ 48,00</div>
+                            <button class="btn-outline" onclick="addToCart(2)">
+                                <i data-lucide="plus" style="width:16px; height:16px;"></i> Adicionar à Sacola
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=600&q=80" alt="Risoto de Camarão ao Limão Siciliano">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-tag">Massas & Risotos</span>
+                            <h3>Risoto de Camarão ao Limão Siciliano</h3>
+                            <p>Arroz arbóreo cremoso com camarões flambados no vinho branco.</p>
+                        </div>
+                        <div>
+                            <div class="card-price">R$ 92,00</div>
+                            <button class="btn-outline" onclick="addToCart(3)">
+                                <i data-lucide="plus" style="width:16px; height:16px;"></i> Adicionar à Sacola
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão centralizado para ir ao cardápio completo -->
+            <div style="text-align:center;">
+                <a href="cardapio.html" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; font-size:1.05rem; padding:16px 36px;">
+                    Ver Cardápio Completo <i data-lucide="arrow-right" style="width:20px; height:20px;"></i>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- SEÇÃO: SOBRE A EMPRESA -->
+        <section id="sobre" class="about-section">
+            <div class="container about-grid">
+                <div>
+                    <span class="card-tag">Tradição & Paixão</span>
+                    <h2 style="font-family:'Fraunces', serif; font-size:2.2rem; margin:10px 0 20px; color:#fff;">A Arte da Alta Gastronomia</h2>
+                    <p style="color:var(--text-muted); margin-bottom:16px;">O <strong>Gourmet & Grill</strong> nasceu da união entre a culinária rústica de fogo de chão e as técnicas refinadas da alta gastronomia internacional.</p>
+                    <p style="color:var(--text-muted); margin-bottom:24px;">Utilizamos apenas ingredientes frescos da estação, carnes com certificação de origem e um atendimento impecável para tornar cada jantar memorável.</p>
+                    <a href="cardapio.html" class="btn-primary">Fazer Pedido no Cardápio</a>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=80" alt="Salão do Restaurante" style="width:100%; border-radius:24px; box-shadow:var(--sombra-card); object-fit:cover; height:340px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CARROSSEL DO ESTABELECIMENTO -->
+        <section id="espaco" class="container section">
+            <h2 class="section-title">Nosso Estabelecimento & Equipe</h2>
+            <p style="text-align:center; color:var(--text-muted); max-width:650px; margin:0 auto 30px auto;">Conheça nossa arquitetura acolhedora, nossa parrilla e os chefs dedicados ao seu paladar.</p>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Salão Principal"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80" alt="Bar e Drinques"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80" alt="Chefs na Cozinha"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Carnes na Brasa"></div>
+                </div>
+                <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)"><i data-lucide="chevron-left"></i></button>
+                <button class="carousel-btn carousel-next" onclick="moveCarousel(1)"><i data-lucide="chevron-right"></i></button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </section>
+
+        
+        <!-- SEÇÃO: PROFISSIONAIS DA COZINHA & FORMAÇÃO -->
+        <section id="chefs" class="container section">
+            <h2 class="section-title">Nossa Cozinha & Mestres Chefs</h2>
+            <p style="text-align:center; color:var(--text-muted); max-width:700px; margin:0 auto 40px auto;">Conheça os profissionais talentosos que comandam nossas parrillas e criações gastronômicas com formação internacional.</p>
+            <div class="cards-grid">
+                <div class="product-card">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80" alt="Chef Enzo Gabriel">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-tag">Chef Executivo</span>
+                            <h3>Chef Enzo Gabriel</h3>
+                            <p><strong>Formação:</strong> Le Cordon Bleu (Paris) & Especialização em Parrilla Argentina (Buenos Aires).</p>
+                            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;">Mais de 15 anos dedicados à alta gastronomia de fogo e cortes nobres.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=600&q=80" alt="Chef de Cuisine Mariana Vasconcelos">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-tag">Sous-Chef & Confeitaria</span>
+                            <h3>Mariana Vasconcelos</h3>
+                            <p><strong>Formação:</strong> Gastronomia pela UNICAMP & École Ritz Escoffier (França).</p>
+                            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;">Especialista em massas artesanais, risotos e sobremesas autorais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80" alt="Mestre Parrillero Carlos Mendoza">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-tag">Mestre Parrillero</span>
+                            <h3>Carlos Mendoza</h3>
+                            <p><strong>Formação:</strong> Certificação Internacional de Assadores em Mendoza (Argentina).</p>
+                            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;">Especialista no controle de brasas, ponto perfeito de carnes e defumação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: DEPOIMENTOS DE CLIENTES -->
+        <section id="feedback" class="container section">
+            <h2 class="section-title">O que Nossos Clientes Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                        </div>
+                        <p>"A melhor carne que já comi em Paranaguá! O atendimento é impecável e o ambiente muito aconchegante para jantar em família."</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Camila" class="client-avatar">
+                        <div>
+                            <h4>Camila Ribeiro</h4>
+                            <small>Cliente Frequente</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                        </div>
+                        <p>"Pedimos pelo WhatsApp e chegou super rápido e quentinho. O hambúrguer artesanal é espetacular!"</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Marcos" class="client-avatar">
+                        <div>
+                            <h4>Marcos Vinícius</h4>
+                            <small>Delivery</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                            <i data-lucide="star" style="width:16px; height:16px; fill:#F59E0B;"></i>
+                        </div>
+                        <p>"Comemorei meu aniversário lá e fomos tratados como reis. A carta de vinhos e os cortes nobres são de outro nível."</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Beatriz" class="client-avatar">
+                        <div>
+                            <h4>Beatriz Lima</h4>
+                            <small>Evento Particular</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CONTATO E RESERVAS -->
+        <section id="contato" class="container section">
+            <h2 class="section-title">Reserva de Mesas & Contato</h2>
+            <div style="background:var(--brand-card); border:1px solid var(--borda); border-radius:24px; padding:32px; max-width:600px; margin:0 auto; box-shadow:var(--sombra-card);">
+                <form onsubmit="reserveTableWhatsApp(event)">
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.9rem;">Nome Completo</label>
+                        <input type="text" id="resName" required placeholder="Seu nome" style="width:100%; padding:12px; border:1px solid var(--borda); border-radius:10px; background:#111; color:#fff;">
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.9rem;">Número de Pessoas</label>
+                        <select id="resPeople" style="width:100%; padding:12px; border:1px solid var(--borda); border-radius:10px; background:#111; color:#fff;">
+                            <option value="2 Pessoas">2 Pessoas</option>
+                            <option value="4 Pessoas">4 Pessoas</option>
+                            <option value="6 Pessoas">6 Pessoas</option>
+                            <option value="Grupo Grande (>6)">Grupo Grande (&gt;6)</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.9rem;">Data e Horário</label>
+                        <input type="datetime-local" id="resDate" required style="width:100%; padding:12px; border:1px solid var(--borda); border-radius:10px; background:#111; color:#fff;">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%; justify-content:center; background:#25D366;">
+                        <i data-lucide="message-circle" style="width:18px; height:18px;"></i> Reservar Mesa via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- SACOLA LATERAL (DRAWER) -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="toggleCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h3 style="font-size:1.2rem; font-weight:700;">Sua Sacola / Pedido</h3>
+            <button onclick="toggleCartDrawer()" style="background:none; border:none; cursor:pointer; color:#fff;"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-body" id="drawerCartItems">
+            <p style="color:#888;">Sua sacola está vazia.</p>
+        </div>
+        <div class="drawer-footer">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-weight:700; font-size:1.1rem;">
+                <span>Total:</span>
+                <span id="drawerTotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn-primary" style="width:100%; justify-content:center; background:#25D366;" onclick="checkoutWhatsApp()">
+                <i data-lucide="message-circle" style="width:18px; height:18px;"></i> Enviar Pedido no WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="margin-bottom:12px; display:inline-flex;">
+                    <i data-lucide="utensils" style="color:var(--brand-red);"></i>
+                    <span class="logo-name">Gourmet &amp; <span>Grill</span></span>
+                </a>
+                <p style="font-size:0.9rem; color:var(--text-muted); max-width:300px;">Alta gastronomia, cortes nobres e momentos marcantes em Paranaguá.</p>
+            </div>
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#inicio" onclick="scrollToSection('inicio'); return false;">Início</a></li>
+                    <li><a href="#sobre" onclick="scrollToSection('sobre'); return false;">Sobre</a></li>
+                    <li><a href="#espaco" onclick="scrollToSection('espaco'); return false;">Nosso Espaço</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Cardápio & Pedidos</h4>
+                <ul>
+                    <li><a href="cardapio.html">Ver Cardápio</a></li>
+                    <li><a href="#feedback" onclick="scrollToSection('feedback'); return false;">Depoimentos</a></li>
+                    <li><a href="#contato" onclick="scrollToSection('contato'); return false;">Reservas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Atendimento</h4>
+                <p style="font-size:0.9rem;">Av. Gabriel de Lara, 850</p>
+                <p style="font-size:0.9rem;">WhatsApp: (41) 99888-7766</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Gourmet & Grill — Todos os direitos reservados</span>
+            <a href="admin.html" class="hidden-owner-link" title="Área Restrita">.</a>
+        </div>
+    </footer>
+
+    <script src="js/store.js"></script>
+    <script>
+        let currentSlide = 0;
+        function moveCarousel(direction) {
+            const track = document.getElementById("carouselTrack");
+            if (!track) return;
+            const slides = track.children;
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+        setInterval(() => moveCarousel(1), 5000);
+    </script>
+
+            <script>
+                function toggleMobileMenu() {
+                    const drawer = document.getElementById("mobileNavDrawer");
+                    if (drawer) drawer.classList.toggle("open");
+                }
+            </script>
+            </body>
+            
+</html>

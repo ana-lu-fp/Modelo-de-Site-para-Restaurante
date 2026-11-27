@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio — Gourmet & Grill</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i data-lucide="utensils" style="color:var(--brand-red);"></i>
+                <span class="logo-name">Gourmet &amp; <span>Grill</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="index.html#sobre">Sobre</a>
+                <a href="index.html#espaco">Nosso Espaço</a>
+                <a href="cardapio.html" class="active">Cardápio & Pedidos</a>
+                <a href="index.html#feedback">Depoimentos</a>
+                <a href="index.html#contato">Contato</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-cart" aria-label="Abrir sacola" onclick="toggleCartDrawer()">
+                    <i data-lucide="shopping-bag" style="width:18px; height:18px;"></i>
+                    <span><span class="cart-label">Sacola </span>(<span id="cartCount">0</span>)</span>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <a href="index.html#inicio">Início</a>
+            <a href="cardapio.html">Cardápio & Vinhos</a>
+            <a href="index.html#sobre">Nossa História</a>
+            <a href="index.html#espaco">Ambiente</a>
+            <a href="index.html#depoimentos">Depoimentos</a>
+            <a href="index.html#contato">Reservas</a>
+        </div>
+        </header>
+        
+
+    <main class="container section">
+        <h2 class="section-title">Cardápio Oficial & Pratos</h2>
+        <div class="menu-filters">
+            <input type="text" id="productSearch" placeholder="Busque por prato, corte, massa ou bebida..." oninput="renderProducts()" style="padding:13px 16px; border-radius:12px; border:1px solid var(--borda); background:var(--brand-card); color:#fff; font-size:0.95rem;">
+            <select id="productCategoryFilter" onchange="renderProducts()" style="padding:13px 16px; border-radius:12px; border:1px solid var(--borda); background:var(--brand-card); color:#fff; font-size:0.95rem;">
+                <option value="Todas">Todas as Categorias</option>
+                <option value="Carnes Nobres">Carnes Nobres</option>
+                <option value="Hambúrgueres">Hambúrgueres</option>
+                <option value="Massas & Risotos">Massas & Risotos</option>
+                <option value="Bebidas & Drinques">Bebidas & Drinques</option>
+            </select>
+        </div>
+
+        <div class="cards-grid" id="allProductsGrid"></div>
+    </main>
+
+    <!-- SACOLA LATERAL (DRAWER) -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="toggleCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h3 style="font-size:1.2rem; font-weight:700;">Sua Sacola / Pedido</h3>
+            <button onclick="toggleCartDrawer()" style="background:none; border:none; cursor:pointer; color:#fff;"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-body" id="drawerCartItems">
+            <p style="color:#888;">Sua sacola está vazia.</p>
+        </div>
+        <div class="drawer-footer">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-weight:700; font-size:1.1rem;">
+                <span>Total:</span>
+                <span id="drawerTotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn-primary" style="width:100%; justify-content:center; background:#25D366;" onclick="checkoutWhatsApp()">
+                <i data-lucide="message-circle" style="width:18px; height:18px;"></i> Enviar Pedido no WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="margin-bottom:12px; display:inline-flex;">
+                    <i data-lucide="utensils" style="color:var(--brand-red);"></i>
+                    <span class="logo-name">Gourmet &amp; <span>Grill</span></span>
+                </a>
+                <p style="font-size:0.9rem; color:var(--text-muted); max-width:300px;">Alta gastronomia, cortes nobres e momentos marcantes em Paranaguá.</p>
+            </div>
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#espaco">Nosso Espaço</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Cardápio & Pedidos</h4>
+                <ul>
+                    <li><a href="cardapio.html">Ver Cardápio</a></li>
+                    <li><a href="index.html#feedback">Depoimentos</a></li>
+                    <li><a href="index.html#contato">Reservas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Atendimento</h4>
+                <p style="font-size:0.9rem;">Av. Gabriel de Lara, 850</p>
+                <p style="font-size:0.9rem;">WhatsApp: (41) 99888-7766</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Gourmet & Grill — Todos os direitos reservados</span>
+            <a href="admin.html" class="hidden-owner-link" title="Área Restrita">.</a>
+        </div>
+    </footer>
+
+    <script src="js/store.js"></script>
+
+            <script>
+                function toggleMobileMenu() {
+                    const drawer = document.getElementById("mobileNavDrawer");
+                    if (drawer) drawer.classList.toggle("open");
+                }
+            </script>
+            </body>
+            
+</html>
